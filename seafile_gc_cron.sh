@@ -31,7 +31,7 @@ web_maint_dir="/var/www/messages/"
 
 # stop the server
 echo Stopping the Seahub and Seafile-Server...
-systemctl stop seafile.service seahub.service || { /bin/echo "${red}stop the seafile and/or seahub service failed${end}"; exit 1; }
+/bin/systemctl stop seafile.service seahub.service || { /bin/echo "${red}stop the seafile and/or seahub service failed${end}"; exit 1; }
 
 #sleep for 10 seconds
 echo Giving the server some time to shut down properly....
@@ -47,7 +47,7 @@ echo Giving the server some time....
 
 # start the server again
 echo Starting the Seahub and Seafile-Server...
-systemctl start seafile.service seahub.service || { /bin/echo "${red}stop the seafile and/or seahub service failed${end}"; exit 1; }
+/bin/systemctl start seafile.service seahub.service || { /bin/echo "${red}stop the seafile and/or seahub service failed${end}"; exit 1; }
 
 #remove the trigger for the maintenance page
 /bin/rm "${web_maint_dir}maintenance.enable" || { /bin/echo "${red}maintenance trigger could not be set${end}"; exit 1; }
